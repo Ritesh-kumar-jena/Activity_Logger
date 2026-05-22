@@ -2,7 +2,7 @@ const mongoose=require("mongoose")
 
 const userSchema=mongoose.Schema({
     name:{type:String,required:true},
-    email:{type:String,required:true},
+    email:{type:String,required:true,unique:true},
     pass:{type:String,required:true},
     role:{
         type:String,
@@ -17,7 +17,7 @@ const userSchema=mongoose.Schema({
         enum:["Active","Inactive"]
     }
 
-},{versionKey:false},{ timestamps: true })
+},{versionKey:false , timestamps: true })
 
 const users=mongoose.model("user",userSchema)
 

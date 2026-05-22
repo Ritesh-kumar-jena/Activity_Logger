@@ -3,6 +3,9 @@ const dotenv=require("dotenv").config()
 const express=require("express")
 const cors=require('cors')
  const { connection } = require("./db")
+ const {userRoute}=require("./Controller/userRotes")
+ const { taskRoute } = require("./Controller/taskRoutes");
+ const { adminRoute } = require("./Controller/adminRoutes");
 
 const port=process.env.port
 
@@ -18,6 +21,9 @@ app.get("/",(req,res)=>{
     }
 })
 
+app.use("/users",userRoute)
+app.use("/tasks", taskRoute);
+app.use("/admin", adminRoute);
 
 app.listen(port,async()=>{
     try {
