@@ -2,7 +2,7 @@ const express = require("express");
 
 const { tasks } = require("../Model/taskModel");
 
-const { auth } = require("../Middelware/auth");
+const { auth } = require("../Middleware/auth");
 
 const { createActivity } = require("../Utils/createActivity");
 

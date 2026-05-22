@@ -4,11 +4,11 @@ const { users } = require("../Model/userModel");
 
 const { tasks } = require("../Model/taskModel");
 
-const { auth } = require("../Middelware/auth");
+const { auth } = require("../Middleware/auth");
 
 const {
   permissonAuth,
-} = require("../Middelware/RoleBasedAccessControl_Auth");
+} = require("../Middleware/RoleBasedAccessControl_Auth");
 
 const adminRoute = express.Router();
 

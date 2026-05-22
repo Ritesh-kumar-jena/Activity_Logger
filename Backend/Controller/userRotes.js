@@ -4,7 +4,7 @@ const bcrypt=require("bcrypt")
 const mongoose =require("mongoose")
 const express=require("express")
 const { users} = require("../Model/userModel")
-const { auth } = require("../Middelware/auth")
+const { auth } = require("../Middleware/auth")
 const { createActivity } = require("../Utils/createActivity")
 
 
