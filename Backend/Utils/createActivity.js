@@ -1,9 +1,9 @@
-const { activityLogs } = require("../Model/activityModel");
+const { activityLogs } = require("../Model/activitylogModel");
 
 const createActivity = async (
   userId,
   action,
-  details
+  detailsS
 ) => {
   try {
     await activityLogs.create({
