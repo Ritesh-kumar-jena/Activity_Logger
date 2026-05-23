@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -14,48 +14,39 @@ import { Link, useNavigate } from "react-router-dom";
 
 import api from "../services/api";
 
-import { AuthContext } from "../contex/AuthContextProvider";
+function Signup() {
 
-function Login() {
-
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const { setIsLogin } = useContext(AuthContext);
+  const toast = useToast();
 
   const navigate = useNavigate();
 
-  const toast = useToast();
-
-  const handleLogin = async () => {
+  const handleSignup = async () => {
 
     try {
 
-      const res = await api.post("/users/login", {
+      await api.post("/users/signIn", {
+        name,
         email,
         pass,
       });
 
-      localStorage.setItem(
-        "token",
-        res.data.token
-      );
-
-      setIsLogin(true);
-
       toast({
-        title: "Login Successful",
+        title: "Signup Successful",
         status: "success",
         duration: 3000,
         isClosable: true,
       });
 
-      navigate("/");
+      navigate("/login");
 
     } catch (error) {
 
       toast({
-        title: "Login Failed",
+        title: "Signup Failed",
         description:
           error.response?.data || "Something went wrong",
         status: "error",
@@ -77,10 +68,16 @@ function Login() {
     >
 
       <Heading textAlign="center" mb={6}>
-        Login
+        Signup
       </Heading>
 
       <VStack spacing={4}>
+
+        <Input
+          placeholder="Enter Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
         <Input
           placeholder="Enter Email"
@@ -98,23 +95,23 @@ function Login() {
         <Button
           width="100%"
           colorScheme="blue"
-          onClick={handleLogin}
+          onClick={handleSignup}
         >
-          Login
+          Signup
         </Button>
 
         <Text>
 
-          Don't have an account?{" "}
+          Already have an account?{" "}
 
           <Link
-            to="/signup"
+            to="/login"
             style={{
               color: "blue",
               fontWeight: "bold",
             }}
           >
-            Signup
+            Login
           </Link>
 
         </Text>
@@ -125,4 +122,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
