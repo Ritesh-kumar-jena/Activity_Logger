@@ -6,4 +6,4 @@
 
 ## Frontend Live demo link :-
 
-- https://activity-logger-by-ritesh.netlify.app/cd
+- https://activity-logger-by-ritesh.netlify.app/
